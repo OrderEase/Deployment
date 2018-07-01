@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - '5050:80'
+    depends_on:
+      - server
+    networks:
+      - server_nw
+
+  server:
+    build: ./Server
+    restart: always
+    command: bash wait-for-it.sh database:3306 -- python3 manage.py runserver
+    volumes:
+      - ./Server:/code
+      - ./scripts/wait-for-it.sh:/code/wait-for-it.sh
+    environment:
+      - MODE
+      - PRODUCTION_DATABASE_URI
+      - SECRET_KEY
+    depends_on:
+      - database
+    networks:
+      - server_nw
+      - database_nw
+    
+  database:
+    image: mysql
+    restart: always
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+    networks:
+      - database_nw
+
+networks:
+  server_nw:
+    driver: bridge
+  database_nw:
+    driver: bridge
