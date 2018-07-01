@@ -16,10 +16,9 @@ services:
   server:
     build: ./Server
     restart: always
-    command: bash wait-for-it.sh database:3306 -- python3 manage.py runserver
+    command: bash docker-entrypoint.sh
     volumes:
       - ./Server:/code
-      - ./scripts/wait-for-it.sh:/code/wait-for-it.sh
     environment:
       - MODE
       - PRODUCTION_DATABASE_URI
