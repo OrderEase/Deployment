@@ -1,3 +1,6 @@
 [submodule "Server"]
 	path = Server
 	url = https://github.com/OrderEase/Server.git
+[submodule "OrderEase-2B"]
+	path = OrderEase-2B
+	url = https://github.com/OrderEase/OrderEase-2B.git

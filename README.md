@@ -1,12 +1,63 @@
 # Deployment
 
-## How to run
+## Usage
 
 ```bash
 $ git clone https://github.com/OrderEase/Deployment.git
+$ cd Deployment
 $ git submodule init && git submodule update
-$ rm Deployment/mysql/data/.gitignore
+```
 
+### OrderEase-2C
+
+#### Configuration
+
+...
+
+#### Build
+
+```bash
+$ cd OrderEase-2C
+$ npm run build
+```
+
+### OrderEase-2B
+
+#### Configuration
+
+`OrderEase-2B/config/index.js`
+
+```js
+module.exports = {
+    ...
+
+    build: {
+        // Paths
+        assetsPublicPath: '/dist/'
+    }
+}
+```
+
+`OrderEase-2B/config/prod.dev.js`
+
+```js
+module.exports = {
+    NODE_ENV: '"production"',
+    BASE_URL: '"/api"',
+    CUSTOMER_BASE_URL: '"http://{YOUR_HOST_NAME}:{CUSTOMER_PORT}/#/login"'
+}
+```
+
+#### Build
+
+```bash
+$ cd OrderEase-2B
+$ npm run build
+```
+
+### Server
+
+```bash
 $ export MYSQL_ROOT_PASSWORD=${YOUR_ROOT_PASSWORD}
 $ export MYSQL_USER=${YOUR_USERNAME}
 $ export MYSQL_PASSWORD=${YOUR_PASSWORD}
