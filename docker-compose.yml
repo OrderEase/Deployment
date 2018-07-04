@@ -8,8 +8,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./OrderEase-2B/dist/:/usr/share/nginx/html/business/
     ports:
-      - '8888:8888'  # Business
-      - '8000:8000'  # Customer
+      - '8888:8888'  # Business Port
+      - '8000:8000'  # Customer Port
     depends_on:
       - server
     networks:
