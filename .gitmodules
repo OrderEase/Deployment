@@ -4,3 +4,6 @@
 [submodule "OrderEase-2B"]
 	path = OrderEase-2B
 	url = https://github.com/OrderEase/OrderEase-2B.git
+[submodule "OrderEase-2C"]
+	path = OrderEase-2C
+	url = https://github.com/OrderEase/OrderEase-2C.git

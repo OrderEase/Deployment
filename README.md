@@ -28,13 +28,11 @@ You can modify the ports and the following configuration must correspond to the 
 
 #### OrderEase-2C
 
-...
-
-
 Build
 
 ```bash
 $ cd OrderEase-2C
+$ npm install
 $ npm run build
 ```
 
@@ -54,6 +52,7 @@ Build
 
 ```bash
 $ cd OrderEase-2B
+$ npm install
 $ npm run build
 ```
 
